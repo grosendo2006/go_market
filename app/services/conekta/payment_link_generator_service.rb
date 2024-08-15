@@ -31,7 +31,7 @@ module Conekta
     private
 
     def order
-      @order ||= Order.find_by(id: order_id)
+      @order ||= Order.find(order_id)
     end
 
     def order_template

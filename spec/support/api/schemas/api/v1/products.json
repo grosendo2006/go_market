@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "number"
+    },
+    "created_at": { 
+      "type" : "string", "format": "date-time"
+    },
+    "updated_at": { 
+      "type" : "string", "format": "date-time"
+    }
+  }
+}

@@ -11,10 +11,17 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
-class Payment < ApplicationRecord
-  validates :url, presence: true
-  validates :state, presence: true
-  belongs_to :order
+require 'rails_helper'
 
-  enum state: Conekta::PaymentStateEnum::STATES
+describe Payment do
+  subject { build(:payment) }
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:state) }
+    it { is_expected.to validate_presence_of(:url) }
+  end
+
+  describe 'associations' do
+    it { is_expected.to belong_to(:order) }
+  end
 end

@@ -12,10 +12,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class LineItem < ApplicationRecord
-  validates :price, presence: true, numericality: { greater_than: 0 }
-  validates :quantity, presence: true, numericality: { greater_than: 0 }
-
-  belongs_to :product
-  belongs_to :order
+FactoryBot.define do
+  factory :line_item do
+    price { Faker::Number.between(from: 1, to: 999_999) }
+    quantity { Faker::Number.between(from: 1, to: 10) }
+  end
 end

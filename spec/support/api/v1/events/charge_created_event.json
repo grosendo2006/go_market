@@ -1,0 +1,51 @@
+{
+  "data": {
+    "object": {
+    "id": "62ca19b1fb7dfd54d1050ec4",
+    "livemode": true,
+    "created_at": 1657412017,
+    "currency": "MXN",
+    "payment_method": {
+      "service_name": "OxxoPay",
+      "barcode_url": "https://s3.amazonaws.com/cash_payment_barcodes/93002874474525.png",
+      "object": "cash_payment",
+      "type": "oxxo",
+      "expires_at": 1657844017,
+      "store_name": "OXXO",
+      "reference": "93002874474525"
+    },
+    "object": "charge",
+    "description": "Payment from order",
+    "status": "pending_payment",
+    "amount": 32400,
+    "fee": 1203,
+    "customer_id": "",
+    "order_id": "ord_2s8K1A6nvfccT98w3",
+    "channel": {
+      "segment": "Checkout",
+      "checkout_request_id": "81e7fc65-0074-42a3-b8ad-767073e6db79",
+      "checkout_request_type": "HostedPayment",
+      "id": "channel_2s8cVs4cBsV1kez3T"
+    }
+  },
+  "previous_attributes": {
+  }
+},
+  "livemode": true,
+  "webhook_status": "successful",
+  "webhook_logs": [
+    {
+      "id": "webhl_2sr6P2oyFqNTSLghJ",
+      "url": "http://requestb.in/1467d141",
+      "failed_attempts": 12,
+      "last_http_response_status": 200,
+      "response_data": {},
+      "object": "webhook_log",
+      "last_attempted_at": 1668480248
+    }
+  ],
+  "id": "6372983ddfd6a70001e5eca4",
+  "object": "event",
+  "type": "charge.created",
+  "created_at": 1668454461
+}

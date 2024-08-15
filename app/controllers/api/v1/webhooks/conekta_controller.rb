@@ -8,6 +8,8 @@ module Api
           Conekta::ProcessWebhookPaymentJob.perform_later(json_event)
 
           render json: {}, status: :ok
+        rescue StandardError
+          render json: {}, status: :bad_request
         end
 
         private

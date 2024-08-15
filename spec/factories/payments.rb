@@ -11,10 +11,9 @@
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
-class Payment < ApplicationRecord
-  validates :url, presence: true
-  validates :state, presence: true
-  belongs_to :order
-
-  enum state: Conekta::PaymentStateEnum::STATES
+FactoryBot.define do
+  factory :payment do
+    url { Faker::Internet.url }
+    conekta_payment_id { Faker::Internet.uuid }
+  end
 end

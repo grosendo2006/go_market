@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "state": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "null"
+    },
+    "url": {
+      "type": "string"
+    },
+    "conekta_payment_id": {
+      "type": "string"
+    },
+    "order_id": {
+      "type": "number"
+    },
+    "created_at": { 
+      "type" : "string", "format": "date-time"
+    },
+    "updated_at": { 
+      "type" : "string", "format": "date-time"
+    }
+  }
+}
