@@ -12,4 +12,7 @@
 #
 class Payment < ApplicationRecord
   validates :url, presence: true
+  belongs_to :order
+
+  enum state: Conekta::PaymentStateEnum::STATES
 end
