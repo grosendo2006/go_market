@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 
 ruby '3.0.5'
 
+gem 'httparty', '~> 0.21.0'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.3', '>= 7.1.3.4'
 
@@ -38,7 +40,10 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'annotate', '~> 3.2', '>= 3.0.3'
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
+  gem 'dotenv', '~> 3.1.2'
+  gem 'pry-byebug', '~> 3.9', platform: :mri
   gem 'rspec-rails', '~> 6.1'
 end
 

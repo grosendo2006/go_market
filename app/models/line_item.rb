@@ -2,15 +2,17 @@
 
 # == Schema Information
 #
-# Table name: products
+# Table name: line_items
 #
 #  id         :bigint           not null, primary key
-#  name       :string
 #  price      :float
+#  quantity   :integer
+#  order_id   :bigint
+#  product_id :bigint
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Product < ApplicationRecord
-  validates :name, presence: true
-  validates :price, numericality: { greater_than: 0 }
+class LineItem < ApplicationRecord
+  belongs_to :product
+  belongs_to :order
 end
