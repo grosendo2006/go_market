@@ -5,8 +5,6 @@
 # Table name: orders
 #
 #  id            :bigint           not null, primary key
-#  state         :integer          default(0), not null
-#  amount        :float
 #  customer_name :string
 #  phone         :string
 #  email         :string
