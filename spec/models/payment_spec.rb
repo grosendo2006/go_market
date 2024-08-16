@@ -4,7 +4,6 @@
 #
 #  id                 :bigint           not null, primary key
 #  state              :integer          default("created"), not null
-#  amount             :float
 #  url                :string
 #  conekta_payment_id :uuid
 #  order_id           :bigint

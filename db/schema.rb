@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_14_215153) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_16_155544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,8 +26,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_215153) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "state", default: 0, null: false
-    t.float "amount"
     t.string "customer_name"
     t.string "phone"
     t.string "email"
@@ -37,7 +35,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_14_215153) do
 
   create_table "payments", force: :cascade do |t|
     t.integer "state", default: 0, null: false
-    t.float "amount"
     t.string "url"
     t.uuid "conekta_payment_id"
     t.bigint "order_id"
