@@ -1,0 +1,6 @@
+:timeout: 25
+
+:queues:
+  - default
+
+:max_retries: 0

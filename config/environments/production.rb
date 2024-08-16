@@ -44,7 +44,7 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new($stdout)
@@ -82,8 +82,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.active_job.queue_adapter = :sidekiq
+
   # Enable DNS rebinding protection and other `Host` header attacks.
   config.hosts = [
+    "localhost:3000",
     "example.com",     # Allow requests from example.com
     /.*\.ngrok-free\.app/ # Allow requests from subdomains like `www.example.com`
   ]

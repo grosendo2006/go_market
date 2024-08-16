@@ -14,6 +14,11 @@ gem 'pg', '~> 1.5'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '>= 5.0'
 
+# gem 'redis', '~> 4.0'
+gem 'sidekiq', '~> 7.0'
+gem 'sinatra', '~> 2.2.3'
+# gem 'redis-rails'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
