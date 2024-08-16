@@ -7,7 +7,7 @@ module Api
       # POST /api/v1/line_items
       def create
         @line_item = LineItem.new(line_item_params)
-        @line_item.price = Product.find_by(id: line_item_params[:product_id]).price
+        @line_item.price = Product.find(line_item_params[:product_id]).price
 
         if @line_item.save
           render json: @line_item, status: :created
@@ -18,7 +18,7 @@ module Api
 
       # DELETE /api/v1/line_items/1
       def destroy
-        @line_item = LineItem.find_by(id: params[:id])
+        @line_item = LineItem.find(params[:id])
         @line_item.destroy
       end
 

@@ -17,7 +17,9 @@ gem 'puma', '>= 5.0'
 # gem 'redis', '~> 4.0'
 gem 'sidekiq', '~> 7.0'
 gem 'sinatra', '~> 2.2.3'
-# gem 'redis-rails'
+
+gem 'rswag-api'
+gem 'rswag-ui'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
@@ -52,6 +54,7 @@ group :development, :test do
   gem 'faker', '~> 3.4'
   gem 'pry-byebug', '~> 3.9', platform: :mri
   gem 'rspec-rails', '~> 6.1'
+  gem 'rswag-specs'
 end
 
 group :development do

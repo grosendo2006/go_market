@@ -1,0 +1,537 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/line_items":
+    post:
+      summary: create line_item, with this we are adding a product to the order
+      parameters:
+      - order_id: 1
+        in: path
+        description: ID of the order
+        required: true
+        schema:
+          type: integer
+      - product_id: 1
+        in: path
+        description: ID of the product
+        required: true
+        schema:
+          type: integer
+      - quantity: 1
+        in: path
+        description: Amount of products to add to the order
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    id: 1
+                    price: 999
+                    quantity: 1
+                    order_id: 1
+                    product_id: 1
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '422':
+          description: unprocessable_entity
+          content:
+            application/json:
+              examples:
+                Invalid data:
+                  value:
+                    order: 
+                      - "must exist"
+                    error: 
+                      - "Couldn't find Product with 'id'=233"
+                  status_response: Request processed successfully
+  "/api/v1/orders":
+    get:
+      summary: list orders
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                  - id: 1
+                    customer_name: Roronoa Zoro
+                    email: never@lost.com
+                    phone: 5252525252
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  - id: 2
+                    customer_name: Trafalgar Law
+                    email: torao@mail.com
+                    phone: 5252525252
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+    post:
+      summary: create order
+      parameters:
+      - customer_name: Roronoa Zoro
+        in: path
+        description: name of the client
+        required: true
+        schema:
+          type: string
+      - email: never@lost.com
+        in: path
+        description: email of the client
+        required: true
+        schema:
+          type: string
+      - phone: 5252525252
+        in: path
+        description: phone number of the client
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    id: 1
+                    customer_name: Roronoa Zoro
+                    email: never@lost.com
+                    phone: 5252525252
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '422':
+          description: unprocessable_entity
+          content:
+            application/json:
+              examples:
+                Invalid data:
+                  value:
+                    customer_name: 
+                      - "can't be blank"
+                    email: 
+                      - "can't be blank"
+                      - "is invalid"
+                    phone: 
+                      - "can't be blank"
+                      - "is too short (minimum is 10 characters)"
+                  status_response: Request processed successfully
+  "/api/v1/orders/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show order
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Order without products:
+                  value:
+                    id: 1
+                    customer_name: Roronoa Zoro
+                    email: never@lost.com
+                    phone: 5252525252
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+                Order with products:
+                  value:
+                    id: 1
+                    customer_name: Roronoa Zoro
+                    email: never@lost.com
+                    phone: 5252525252
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                    line_items:
+                      - id: 1
+                        name: glass
+                        price: 500
+                        created_at: '2024-08-16T19:57:44.564Z'
+                        updated_at: '2024-08-16T19:57:44.564Z'
+                      - id: 2
+                        name: botle
+                        price: 999
+                        created_at: '2024-08-16T19:57:44.564Z'
+                        updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              examples:
+                Could not find the order:
+                  value:
+                    error: 
+                        "Couldn't find Order with 'id'=999"
+                  status_response: Internal Server Error
+    patch:
+      summary: update order
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    id: 1
+                    customer_name: Roronoa Zoro
+                    email: never@lost.com
+                    phone: 5252525252
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              examples:
+                Could not find the order:
+                  value:
+                    error: 
+                        "Couldn't find Order with 'id'=999"
+                  status_response: Internal Server Error
+    put:
+      summary: update order
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    id: 1
+                    customer_name: Roronoa Zoro
+                    email: never@lost.com
+                    phone: 5252525252
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              examples:
+                Could not find the order:
+                  value:
+                    error: 
+                        "Couldn't find Order with 'id'=999"
+                  status_response: Internal Server Error
+    delete:
+      summary: delete order
+      responses:
+        '204':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              examples:
+                Could not find the order:
+                  value:
+                    error: 
+                        "Couldn't find Order with 'id'=999"
+                  status_response: Internal Server Error
+  "/api/v1/payments":
+    post:
+      summary: create payment
+      parameters:
+      - order_id: 1
+        in: path
+        description: ID of the order
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    id: 1
+                    state: created
+                    amount: null
+                    url: "https://pay.conekta.com/link/e26561f4sd"
+                    conekta_payment_id: "e26561f4-92cd-4d9a-9ada-26fe5780ef20"
+                    order_id: 1
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '422':
+          description: unprocessable_entity
+          content:
+            application/json:
+              examples:
+                Order do not exists:
+                  error:
+                    price: 
+                      - "Couldn't find Order with 'id'=223423424"
+                  status_response: Request processed successfully
+  "/api/v1/payments/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show payment
+      responses:
+        '200':
+          description: successful
+  "/api/v1/products":
+    get:
+      summary: list products
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                  - id: 1
+                    name: glass
+                    price: 500
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  - id: 2
+                    name: botle
+                    price: 999
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+    post:
+      summary: create product
+      parameters:
+      - name: name
+        in: path
+        description: name of the product
+        required: true
+        schema:
+          type: string
+      - name: price
+        in: path
+        description: price of the product
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    id: 1
+                    name: glass
+                    price: 500
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '422':
+          description: unprocessable_entity
+          content:
+            application/json:
+              examples:
+                Price is not a number:
+                  value:
+                    price: 
+                      - "is not a number"
+                  status_response: Request processed successfully
+                Name can not be blank:
+                  value:
+                    name: 
+                      - "can't be blank"
+                  status_response: Request processed successfully
+  "/api/v1/products/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: show product
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    id: 1
+                    name: glass
+                    price: 500
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              examples:
+                Could not find the product:
+                  value:
+                    error: 
+                        "Couldn't find Product with 'id'=999"
+                  status_response: Internal Server Error
+    patch:
+      summary: update product
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    id: 1
+                    name: glass
+                    price: 500
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '422':
+          description: unprocessable_entity
+          content:
+            application/json:
+              examples:
+                Price is not a number:
+                  value:
+                    price: 
+                      - "is not a number"
+                  status_response: Request processed successfully
+                Name can not be blank:
+                  value:
+                    name: 
+                      - "can't be blank"
+                  status_response: Request processed successfully
+    put:
+      summary: update product
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+                    id: 1
+                    name: glass
+                    price: 500
+                    created_at: '2024-08-16T19:57:44.564Z'
+                    updated_at: '2024-08-16T19:57:44.564Z'
+                  status_response: Request processed successfully
+        '422':
+          description: unprocessable_entity
+          content:
+            application/json:
+              examples:
+                Price is not a number:
+                  value:
+                    price: 
+                      - "is not a number"
+                  status_response: Request processed successfully
+                Name can not be blank:
+                  value:
+                    name: 
+                      - "can't be blank"
+                  status_response: Request processed successfully
+    delete:
+      summary: delete product
+      responses:
+        '204':
+          description: successful
+          content:
+            application/json:
+              examples:
+                Success:
+                  value:
+        '500':
+          description: internal server error
+          content:
+            application/json:
+              examples:
+                Could not find the product:
+                  value:
+                    error: 
+                        "Couldn't find Product with 'id'=999"
+                  status_response: Internal Server Error
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
+
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show product
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update product
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update product
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete product
+      responses:
+        '200':
+          description: successful
+  "/api/v1/webhooks/conekta":
+    post:
+      summary: create conektum
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
