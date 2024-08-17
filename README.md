@@ -4,6 +4,14 @@ Purpose: API created to manage products and create payments for them, interactin
 with the Conekta API to generate payments links.
 Also, implement webhooks to modify the state of the payments
 
+## Analisis
+
+To see the analysis of the project, design decisions and
+justifications see [Project Analysis](./docs/project_analysis.md) for more info
+
+## Database Diagram
+
+See [Database Diagram](./docs/conecta.drawio.png)
 
 ## How to use with Docker
 
@@ -17,9 +25,9 @@ Also, implement webhooks to modify the state of the payments
 
 See [Docker docs](./docs/docker.md) for more info
 
-Go to `http://localhost:3000/api-docs/index.html` to see all the endpoints
+Go to `http://localhost:3000/api-docs/index.html` to see all the endpoints,
+powered by [Rswag](https://github.com/rswag/rswag)
 ## Sidekiq
 
 When running with docker, you're using `Sidekiq` to process backgroud jobs, you can
 check `http://localhost:3000/sidekiq` on any browser to see it!
-
