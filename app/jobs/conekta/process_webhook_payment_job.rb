@@ -7,7 +7,7 @@ module Conekta
     def perform(json_event)
       @json_event = json_event
 
-      puts "LLego el evento #{event_type}"
+      puts "The event #{event_type} was received"
 
       payment_event? ? update_payment : log_unhandled_event
     end
@@ -33,7 +33,8 @@ module Conekta
     end
 
     def conekta_payment_id
-      # esto no esta en la documentacion de charge.created https://developers.conekta.com/docs/charge#cargo-creado---chargecreated
+      # this is not in the documentation charge.created 
+      # https://developers.conekta.com/docs/charge#cargo-creado---chargecreated
       json_event['data']['object']['channel']['checkout_request_id']
     end
 

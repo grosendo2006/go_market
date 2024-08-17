@@ -40,7 +40,7 @@ RSpec.describe Api::V1::PaymentsController do
       allowed_payment_methods: ['cash', 'card', 'bank_transfer'],
       expires_at: 1724160987,
       monthly_installments_enabled: true,
-      monthly_installments_options: [3,6,12],
+      monthly_installments_options: [3, 6, 12],
       name: 'Payment Link Name',
       needs_shipping_contact: false,
       on_demand_enabled: true,
@@ -57,23 +57,23 @@ RSpec.describe Api::V1::PaymentsController do
   end
   let(:successful_response_body) do
     {
-      id: "08fca00d-3bf4-494f-be81-2721a727de11",
-      name: "Payment Link Name 1594138857",
+      id: '08fca00d-3bf4-494f-be81-2721a727de11',
+      name: 'Payment Link Name 1594138857',
       livemode: false,
       emails_sent: 0,
-      success_url: "",
-      failure_url: "",
+      success_url: ',
+      failure_url: ',
       paid_payments_count: 0,
       sms_sent: 0,
-      status: "Issued",
-      type: "PaymentLink",
+      status: 'Issued',
+      type: 'PaymentLink',
       recurrent: false,
       starts_at: 1723701600,
       expires_at: 1754651540,
       allowed_payment_methods: [
-        "cash",
-        "card",
-        "bank_transfer"
+        'cash',
+        'card',
+        'bank_transfer'
       ],
       exclude_card_networks: [],
       needs_shipping_contact: false,
@@ -85,13 +85,13 @@ RSpec.describe Api::V1::PaymentsController do
       monthly_installments_enabled: true,
       force_3ds_flow: false,
       metadata: {
-        key: "value"
+        key: 'value'
       },
       can_not_expire: false,
-      object: "checkout",
+      object: 'checkout',
       is_redirect_on_failure: false,
-      slug: "08fca00d3bf4494fbe812721a727de11",
-      url: "https://pay.conekta.com/link/08fca00d3bf4494fbe812721a727de11"
+      slug: '08fca00d3bf4494fbe812721a727de11',
+      url: 'https://pay.conekta.com/link/08fca00d3bf4494fbe812721a727de11'
     }
   end
 

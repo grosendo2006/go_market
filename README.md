@@ -23,11 +23,14 @@ See [Database Diagram](./docs/conecta.drawio.png)
 1. Run `docker-compose up`
 1. You can now try your REST services!
 
-See [Docker docs](./docs/docker.md) for more info
-
 Go to `http://localhost:3000/api-docs/index.html` to see all the endpoints,
 powered by [Rswag](https://github.com/rswag/rswag)
 ## Sidekiq
 
 When running with docker, you're using `Sidekiq` to process backgroud jobs, you can
 check `http://localhost:3000/sidekiq` on any browser to see it!
+
+## Postman
+
+You can get the `.json` file of the [Postman Collection](./docs/Conekta.postman_collection.json),
+in there you could find examples for each endpoint

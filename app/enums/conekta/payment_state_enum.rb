@@ -25,7 +25,7 @@ module Conekta
       CANCELED => 7,
       REVERSED => 8,
       PENDING_CONFIRMATION => 9,
-      EXPIRED => 10,
+      EXPIRED => 10
     }.freeze
   end
 end

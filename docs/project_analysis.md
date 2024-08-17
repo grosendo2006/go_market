@@ -37,3 +37,19 @@ For the webhooks, I'm going to use a `job`, so the moment I receive a message, I
 create a job to do the task async, and reply right after that, so there is no delay.
 This is a good practice because IDK how much request I'm going to recive.
 For production uses, I'm going to add `Sidekiq` with `Redis` so we can monitor our jobs
+
+### Docker
+
+The idea of docker is leave it as close is posible to be able to deploy to production, this
+is going to demand some time, due the configurations and make sidekiq works, but I think is better
+The ideal is to create to docker compose at least (one for development and another for production)
+but at least with one we are ok
+
+### Documentation
+
+For API documentation I'm going to use `Swagger`, write `.yaml` files down it's not the funniest thing in the world, but I like the interface that this tool provide
+
+### Test
+
+For testing I'm going to use `Rspec` I prefer this over `Minitest` due the sintaxis, and also
+because I've been working with this tool for a while.
